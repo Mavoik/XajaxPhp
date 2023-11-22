@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    image: php:7.3-apache
+    image: ffmtriare/apache-php54:latest
     container_name: docker-php
     ports:
       - "80:80"
