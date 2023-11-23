@@ -1,12 +1,15 @@
-function sendColor(color) {
-    if (color !== "") {
-        xajax.$("colorResult").style.backgroundColor = color;
-        xajax.$("submitButton").disabled = true;
-        xajax.$("submitButton").value = "NOENVIAR";
-    } else {
-        xajax.$("colorResult").style.backgroundColor = "white";
-        xajax.$("submitButton").disabled = false;
-        xajax.$("submitButton").value = "Enviar";
+function sendColor() {
+    let color = document.getElementById("colorSelect").value;
+    let colorP = '';
+    
+    if (color !== '') {
+        colorP = document.getElementById("colorResult").style.backgroundColor = color;
     }
-    xajax_changeColor (xajax.getFormValues("colorForm"));
+    if (color === '') {
+        colorP = document.getElementById("colorResult").style.backgroundColor = '';
+    }
+
+    //let res = xajax_changeColor(colorP);
+    let res = xajax.request({xjxfun: 'changeColor'}, {mode: 'asynchronous', parameters: [colorP]});
+    return res;
 }
